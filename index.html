@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <title>Calculator</title>
+</head>
+
+<body>
+  <div id="container">
+    
+  
+  <input type="text" id="calc" value="0" minlength="1" maxlength="9">
+  
+  <section id="one">
+    <button id="number" onclick="pressOne()">1</button>
+    <button id="number" onclick="pressTwo()">2</button>
+    <button id="number"onclick="pressThree()">3</button>
+    <button id="add" class="operand" onclick="add()">+</button>
+  </section>
+  
+  <section id="one">
+    <button id="number" onclick="pressFour()">4</button>
+    <button id="number" onclick="pressFive()">5</button>
+    <button id="number" onclick="pressSix()">6</button>
+    <button id="suntract" class="operand" onclick="subtract()">-</button>
+  </section>
+  
+  <section id="one">
+    <button id="number" onclick="pressSeven()">7</button>
+    <button id="number" onclick="pressEight()">8</button>
+    <button id="number" onclick="pressNine()">9</button>
+    <button id="multiply" class="operand" onclick="multiply()">×</button>
+  </section>
+  
+  <section id="one">
+    <button id="clear" class="cancel" onclick="clearOut()">C</button>
+    <button id="eql-btn" onclick="equalTo()">=</button>
+    <button id="number" onclick="pressZero()">0</button>
+    <button id="divide" class="operand" onclick="divide()">÷</button>
+  </section>
+  </div>
+  <script src="main.js"></script>
+</body>
+
+</html>

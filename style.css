@@ -1,0 +1,72 @@
+body{
+  width: 95%;
+  height: 400px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid seagreen;
+  width: 70%;
+  padding-bottom: 7px;
+  background-color: tomato;
+  border-radius: 5px;
+}
+
+#calc {
+  width: 87%;
+  height: 55px;
+  font-size: 40px;
+  color: greenyellow;
+  background-color: black;
+  border-radius: 4px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  text-align: center;
+  margin-bottom: 3px;
+  margin-top: 6px;
+}
+
+#number{
+  width: 45px;
+  height: 45px;
+  font-size: 25px;
+  color: darkslategrey;
+  font-weight: bold;
+}
+
+.operand{
+  width: 45px;
+  height: 45px;
+  font-size: 30px;
+  font-weight: bold;
+  color: seagreen;
+}
+
+#eql-btn{
+  width: 45px;
+  height: 45px;
+  font-size: 30px;
+  font-weight: bold;
+  color: darkred
+}
+
+.cancel{
+  width: 45px;
+  height: 45px;
+  font-size: 30px;
+  font-weight: bold;
+  color: darkgoldenrod;
+}
+
+#one{
+  display: flex;
+  height: 52px;
+  width: 89%;
+  align-items: center;
+  justify-content: space-between;
+}
