@@ -1,6 +1,7 @@
 let operand1 = 0
 let operand2
 let equals
+let seconder = 0
 
 let inputVal = document.getElementById("calc")
 
@@ -9,119 +10,104 @@ let subtraction = false
 let multiplication = false
 let division = false
 
-
 let counter = false
+let stopper = false
 
-function pressOne(){
+function pressOne() {
+  round(1)
+}
+
+function round(num){
   if (counter === true) {
-    inputVal.value = 1
+    inputVal.value = num
     counter = false
-  } else {
-    count(1)
-  }
-}
- 
-function pressTwo(){
-  if (counter === true) {
-   inputVal.value = 2
-   counter = false
- } else {
-   count(2)
- }
-}
-
-function count(num) {
-  if (inputVal.value == 0) {
+  } else if (stopper === true){
+    inputVal.value += num
+    seconder += num
+    stopper = false
+  } else if (seconder != 0){
+    inputVal.value +=num
+    seconder += JSON.stringify(num)
+  } else if (inputVal.value == 0) {
     inputVal.value = num
   } else {
     inputVal.value += num
   }
 }
 
-function pressThree(){
-  if (counter === true) {
-    inputVal.value = 3
-    counter = false
-  } else {
-    count(3)
+
+function equalTo(){
+  if (addition){
+   localStorage.setItem("onValue", seconder)
+     operand2 = localStorage.getItem("onValue")
+    equals = Number(operand1) + Number(operand2)
+  } else if (subtraction){
+    localStorage.setItem("onValue", seconder)
+    operand2 = localStorage.getItem("onValue")
+    equals = Number(operand1) - Number(operand2)
+  } else if (multiplication){
+    localStorage.setItem("onValue", seconder)
+    operand2 = localStorage.getItem("onValue")
+    equals = Number(operand1) * Number(operand2)
+  } else{
+    localStorage.setItem("onValue", seconder)
+    operand2 = localStorage.getItem("onValue")
+    equals = Number(operand1) / Number(operand2)
   }
+  inputVal.value = equals
+  counter = true
+  stopper = false 
+  addition = false
+  subtraction = false
+  multiplication = false
+  division = false
+  operand1 = 0
+  seconder = 0
+}
+ 
+function pressTwo(){
+  round(2)
+}
+
+function pressThree(){
+  round(3)
 }
 
 function pressFour(){
-  if (counter === true) {
-    inputVal.value = 4
-    counter = false
-  } else {
-    count(4)
-  }
+  round(4)
 }
 
 function pressFive(){
-  if (counter === true) {
-    inputVal.value = 5
-    counter = false
-  } else {
-    count(5)
-  }
+  round(5)
 }
 
 function pressSix(){
-  if (counter === true) {
-    inputVal.value = 6
-    counter = false
-  } else {
-    count(6)
-  }
+  round(6)
 }
 
 function pressSeven(){
-  if (counter === true) {
-    inputVal.value = 7
-    counter = false
-  } else {
-    count(7)
-  }
+  round(7)
 }
 
 function pressEight(){
-  if (counter === true) {
-    inputVal.value = 8
-    counter = false
-  } else {
-    count(8)
-  }
+  round(8)
 }
 
 function pressNine(){
-  if (counter === true) {
-    inputVal.value = 9
-    counter = false
-  } else {
-    count(9)
-  }
+  round(9)
 }
 
 function pressZero(){
-  if (counter === true) {
-    inputVal.value = 0
-    counter = false
-  } else {
-    count(0)
-  }
+  round(0)
 }
 
 function add(){
-if (operand1 === 0) {
-  localStorage.setItem("myValue", inputVal.value)
-  operand1 = localStorage.getItem("myValue")
-  console.log(operand1)
-  inputVal.value = 0
-  addition = true
-} else {
-  operand2 = inputVal.value
-  equals = Number(operand1) + Number(operand2)
-  inputVal.value = equals
-  console.log(operand1 + " + " + operand2 + " is equal to = " + equals)
+  if (operand1 === 0) {
+    localStorage.setItem("myValue", inputVal.value)
+    operand1 = localStorage.getItem("myValue")
+   inputVal.value += "+"
+    addition = true
+    stopper = true
   }
 }
 
@@ -129,14 +115,9 @@ function subtract(){
   if (operand1 === 0) {
     localStorage.setItem("myValue", inputVal.value)
     operand1 = localStorage.getItem("myValue")
-    console.log(operand1)
-    inputVal.value = 0
+    inputVal.value += "-"
     subtraction = true
-  } else {
-    operand2 = inputVal.value
-    equals = Number(operand1) - Number(operand2)
-    inputVal.value = equals
-    console.log(operand1 + " - " + operand2 + " is equal to = " + equals)
+    stopper = true
   }
 }
 
@@ -144,60 +125,33 @@ function multiply() {
   if (operand1 === 0) {
     localStorage.setItem("myValue", inputVal.value)
     operand1 = localStorage.getItem("myValue")
-    console.log(operand1)
-    inputVal.value = 0
+    inputVal.value += "x"
     multiplication = true
-  } else {
-    operand2 = inputVal.value
-    equals = Number(operand1) * Number(operand2)
-    inputVal.value = equals
-    console.log(operand1 + " x " + operand2 + " is equal to = " + equals)
+    stopper = true 
   }
 }
 
 function divide() {
   if (operand1 === 0) {
-  localStorage.setItem("myValue", inputVal.value)
-  operand1 = localStorage.getItem("myValue")
-  console.log(operand1)
-  inputVal.value = 0
-  division = true
-} else {
-  operand2 = inputVal.value
-  equals = Number(operand1) / Number(operand2)
-  inputVal.value = equals
-  console.log(operand1 + " ÷ " + operand2 + " is equal to = " + equals)
+    localStorage.setItem("myValue", inputVal.value)
+    operand1 = localStorage.getItem("myValue")
+    inputVal.value += "÷"
+    division = true
+    stopper = true
   }
 }
 
-function equalTo(){
-  operand1 = localStorage.getItem("myValue")
-  operand2 = inputVal.value
-  if (addition){
-    equals = Number(operand1) + Number(operand2)
-    console.log(operand1 + " + " + operand2 + " is equal to = " + equals)
-  } else if (subtraction){
-    equals = Number(operand1) - Number(operand2)
-    console.log(operand1 + " - " + operand2 + " is equal to = " + equals)
-  } else if (multiplication){
-    equals = Number(operand1) * Number(operand2)
-    console.log(operand1 + " x " + operand2 + " is equal to = " + equals)
-  } else{
-    equals = Number(operand1) / Number(operand2)
-    console.log(operand1 + " ÷ " + operand2 + " is equal to = " + equals)
-  }
-  inputVal.value = equals
-  counter = true
-}
 
 function clearOut(){
   inputVal.value = 0
-  operand1=0
-  operand2=0
+  operand1 = 0
+  operand2 = 0
   addition = false
   subtraction = false
   multiplication = false
   division = false
+  counter = false
+  timer = false 
   localStorage.clear()
   console.log("CLEAR!")
 }
